@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<iostream>
 #include <string>
+#include <typeinfo>
+#include <algorithm>
 
 using namespace std;
 
@@ -52,6 +54,7 @@ string addBinary(string a, string b){
     int carry = 0;
     string result = "";
     while(ia >= 0 || ib >= 0){
+        cout<<"ia: "<<ia<<" | ib: "<<ib<<endl;
         int sum = carry;
         if(ia >= 0){
             sum += a[ia--] - '0';
@@ -61,23 +64,46 @@ string addBinary(string a, string b){
         }
         result = to_string(sum % 2) + result;
         carry = sum / 2;
+        cout<<"result: "<<result<<" | carry: "<<carry<<endl;
+    }
+    if(carry){
+        result = '1' + result;
     }
     return result; 
 }
 
+string addBinary2(string a, string b) {
+    string ans;
+    int carry = 0;
+    int i = a.length() - 1;
+    int j = b.length() - 1;
+
+    while (i >= 0 || j >= 0 || carry) {
+      if (i >= 0)
+        carry += a[i--] - '0';
+      if (j >= 0)
+        carry += b[j--] - '0';
+      ans += carry % 2 + '0';
+      cout<<"ans: "<<ans<<" carry%2: "<<carry%2<<" carry%2 + '0': "<<carry%2+'0' <<endl;
+      carry /= 2;
+    }
+
+    reverse(begin(ans), end(ans));
+    return ans;
+  }
+
 
 int main(){
     // std::cout<<"Hello World"<<std::endl;
-    // string result = test("1010", "1011");
-    // cout<<"result: + " <<result<<endl;
+    string result = addBinary2("11", "1");
+    cout<<"result: " <<result<<endl;
 
-    string a = "10";
-    string b= "10";
-    if(b[2]){
-        cout<<"b2"<<endl;
-    } else {
-        cout<<"NO"<<endl;
-    }
+    // string a = "10";
+    // string b= "10";
+    // int te = 0;
+    // cout<<"First: "<<'0' - '0'<<endl;
+    // cout<<"Second: "<<'1' - '0'<<endl;
+    // cout<<"type: "<<typeid('1' - '0').name()<<endl;
     
     // string b = '1' + a;
     // cout<<b<<endl;
