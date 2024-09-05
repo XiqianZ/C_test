@@ -3,6 +3,9 @@
 #include<stdio.h>
 #include<vector>
 #include<iostream>
+#include<stack>
+#include<set>
+#include<map>  
 
 using namespace std;
 
@@ -13,4 +16,11 @@ struct TreeNode {
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
 };

@@ -1,0 +1,23 @@
+Each row of Pascal's Triangle can be represented using the sequence of combinations:
+C(r,0),C(r,1),C(r,2),…,C(r,r)
+where C(n,k) is the binomial coefficient, defined as:
+C(n,k)= 
+k!(n−k)!
+n!
+​
+ 
+
+The row's first element is always 1. Given the previous element in the row (prev), the next element can be calculated using:
+next_val=prev× 
+k
+rowIndex−k+1
+​
+ class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        res = [1]
+        prev = 1
+        for k in range(1, rowIndex + 1):
+            next_val = prev * (rowIndex - k + 1) // k
+            res.append(next_val)
+            prev = next_val
+        return res
