@@ -31,5 +31,27 @@ int main(){
     cout << "newData->a: " << newData.a << endl;
     cout << "newData->b: " << newData.b << endl;
 
+    
+
+    //Compare two unsigned char[16] arrays
+    unsigned char array1[16] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F};
+    unsigned char array2[16] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F};
+
+    if (memcmp(array1, array2, 16) == 0) {
+        std::cout << "The arrays are equal." << std::endl;
+    } else {
+        std::cout << "The arrays are not equal." << std::endl;
+    }
+
+    unsigned char array3[16] = {0};
+    unsigned char array4[16] = {0};
+    if(memcmp(array3, array4, 16) == 0){
+        std::cout << "The arrays are equal." << std::endl;
+    }else{
+        std::cout << "The arrays are not equal." << std::endl;
+    }
+
+
+
 
 }
